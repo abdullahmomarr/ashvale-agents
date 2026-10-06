@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashvale | AI agents built and run for your business</title>
+<meta name="description" content="Ashvale builds AI agents that follow up old leads, prepare your sales calls and run your reports. The first agent is free for 14 days.">
+<meta property="og:title" content="Ashvale | AI agents built and run for your business">
+<meta property="og:description" content="The work nobody gets to, done every day. The first agent is free for 14 days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ashvaleagents.com/">
+<link rel="canonical" href="https://ashvaleagents.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%230B1220%27/%3E%3Crect x=%2710%27 y=%2710%27 width=%2712%27 height=%2712%27 fill=%27%23F8FAFC%27 transform=%27rotate(45 16 16)%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --ink:#0B1220;
+  --navy:#0F172A;
+  --bg:#F8FAFC;
+  --card:#FFFFFF;
+  --line:#E2E8F0;
+  --text:#020617;
+  --muted:#475569;
+  --accent:#0369A1;
+  --on-dark:#F8FAFC;
+  --on-dark-muted:#A3B1C6;
+  --line-dark:rgba(255,255,255,.11);
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --frame:1160px;
+  --pad:40px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.dark :focus-visible{outline-color:#7DD3FC}
+.skip{position:absolute;left:16px;top:-60px;background:#fff;color:var(--text);padding:12px 16px;border-radius:6px;z-index:100;font-weight:600}
+.skip:focus{top:16px}
+
+/* frame: the hairline column that runs the length of the page */
+.band{border-top:1px solid var(--line)}
+.band.dark{background:var(--ink);color:var(--on-dark);border-top-color:var(--line-dark)}
+.frame{max-width:var(--frame);margin-inline:auto;padding-inline:var(--pad);border-inline:1px solid var(--line)}
+.dark .frame{border-inline-color:var(--line-dark)}
+.section{padding-block:104px}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.dark .eyebrow{color:var(--on-dark-muted)}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.012em}
+h1,h2,h3{text-wrap:balance}
+h1{font-size:clamp(44px,5.4vw,74px);line-height:1.02}
+h2{font-size:clamp(34px,4vw,52px);line-height:1.06}
+h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;letter-spacing:-.005em}
+.lede{font-size:19px;color:var(--muted);max-width:60ch}
+.dark .lede{color:var(--on-dark-muted)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.head .lede{justify-self:end}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:6px;font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.btn svg{width:16px;height:16px;transition:transform .2s ease}
+.btn:hover svg{transform:translateX(3px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:#E2E8F0}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:#1E293B}
+.btn-ghost{color:var(--on-dark);border-color:var(--line-dark)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.4)}
+.link{color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+.link svg{width:15px;height:15px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.88);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line-dark);color:var(--on-dark)}
+.nav .frame{display:flex;align-items:center;justify-content:space-between;height:68px;border-inline-color:var(--line-dark)}
+.brand{font-family:var(--serif);font-size:27px;text-decoration:none;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:10px;min-height:44px}
+.brand i{width:11px;height:11px;background:var(--on-dark);display:inline-block;transform:rotate(45deg)}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav li a{font-size:15px;color:var(--on-dark-muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:color .2s ease}
+.nav li a:hover{color:#fff}
+.nav .btn{min-height:44px;padding:0 16px;font-size:15px}
+
+/* hero */
+.hero .frame{display:grid;grid-template-columns:1.08fr .92fr;gap:0;padding-inline:0}
+.hero-copy{padding:96px var(--pad) 96px;border-right:1px solid var(--line-dark)}
+.hero-copy p.lede{margin-top:26px;font-size:20px;max-width:46ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-note{margin-top:22px;font-size:14px;color:var(--on-dark-muted)}
+.hero-art{position:relative;display:flex;flex-direction:column;justify-content:center;padding:56px var(--pad);overflow:hidden;
+  background:
+   radial-gradient(520px 380px at 70% 40%,rgba(3,105,161,.42),transparent 70%),
+   linear-gradient(var(--line-dark) 1px,transparent 1px) 0 0/100% 56px,
+   linear-gradient(90deg,var(--line-dark) 1px,transparent 1px) 0 0/56px 100%}
+.msg{position:relative;background:#fff;color:var(--text);border-radius:10px;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);max-width:440px;margin-inline:auto;width:100%}
+.msg-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.avatar{width:36px;height:36px;border-radius:8px;background:var(--navy);display:grid;place-items:center;flex:none}
+.avatar i{width:11px;height:11px;background:#fff;transform:rotate(45deg)}
+.msg-name{font-weight:600;font-size:15px}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;background:#E8ECF1;color:var(--muted);padding:2px 6px;border-radius:3px;margin-left:6px}
+.msg-time{font-size:13px;color:var(--muted);margin-left:auto}
+.msg p{font-size:15px;line-height:1.5}
+.draft{margin-top:12px;border-left:3px solid var(--line);padding:2px 0 2px 14px;color:#1E293B}
+.msg-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font-size:14px;font-weight:600;padding:8px 14px;border-radius:6px;border:1px solid var(--line);color:var(--text);background:#fff}
+.chip.go{background:#166534;border-color:#166534;color:#fff}
+.caption{position:relative;font-size:13px;color:var(--on-dark-muted);max-width:440px;margin:18px auto 0;width:100%}
+
+/* problem */
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.problem .body p{font-size:19px;color:var(--muted)}
+.problem .body p+p{margin-top:18px}
+.problem .body strong{color:var(--text);font-weight:600}
+
+/* agents grid */
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cell{background:var(--card);padding:34px 30px 30px;display:flex;flex-direction:column;min-height:290px}
+.cell .num{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:26px}
+.cell p{color:var(--muted);font-size:16px;margin-top:12px}
+.cell .kind{margin-top:auto;padding-top:24px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.cell.last{background:var(--bg)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-dark);position:relative}
+.step{padding:34px 26px 8px 0;position:relative}
+.step+.step{padding-left:26px;border-left:1px solid var(--line-dark)}
+.step::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--on-dark)}
+.step+.step::before{left:26px}
+.step .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--on-dark-muted);margin-bottom:16px}
+.step p{color:var(--on-dark-muted);font-size:16px;margin-top:12px}
+
+/* work */
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.story{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:30px}
+.story .where{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.story p{color:var(--muted);font-size:16px;margin-top:12px}
+.stats{margin-top:72px}
+.stats h3{margin-bottom:8px}
+.stats>p{color:var(--muted);max-width:60ch}
+.rows{margin-top:28px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.row p{color:var(--muted);max-width:62ch;font-size:16px}
+.row .big{color:var(--text);max-width:none;font-family:var(--serif);font-size:clamp(34px,4.4vw,56px);line-height:1;white-space:nowrap;letter-spacing:-.01em}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.fit>div{background:var(--card);padding:38px 34px}
+.fit ul{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:16px}
+.fit li{display:grid;grid-template-columns:22px 1fr;gap:14px;color:var(--muted);font-size:16px}
+.fit li svg{width:20px;height:20px;margin-top:3px}
+.fit .yes svg{color:#166534}
+.fit .no svg{color:#B91C1C}
+.fit .after{margin-top:22px;color:var(--text);font-size:16px}
+
+/* founder */
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.founder .body p{color:var(--muted);font-size:18px}
+.founder .body p+p{margin-top:18px}
+.founder .body strong{color:var(--text);font-weight:600}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-weight:600;font-size:17px;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:18px;height:18px;flex:none;transition:transform .2s ease;color:var(--muted)}
+.faq details[open] summary svg{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding:0 40px 24px 0;font-size:16px}
+
+/* cta + footer */
+.cta{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}
+.cta p.lede{margin-top:22px}
+.cta .act{justify-self:end;text-align:right}
+.cta .act small{display:block;margin-top:14px;font-size:14px;color:var(--on-dark-muted)}
+.foot .frame{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:28px;font-size:14px;color:var(--on-dark-muted)}
+.foot .brand{font-size:22px;color:var(--on-dark)}
+
+/* reveal: only hidden when JS is on, so the page still reads without it */
+.js .rv{opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{opacity:1;transform:none;transition:none}
+  .btn svg,.faq summary svg{transition:none}
+}
+
+@media (max-width:1000px){
+  :root{--pad:28px}
+  .section{padding-block:80px}
+  .hero .frame{grid-template-columns:1fr}
+  .hero-copy{border-right:0;padding-block:72px 56px}
+  .hero-art{border-top:1px solid var(--line-dark);padding-block:48px}
+  .head,.problem,.founder,.faq,.cta{grid-template-columns:1fr;gap:28px}
+  .head{align-items:start;margin-bottom:44px}
+  .head .lede,.cta .act{justify-self:start;text-align:left}
+  .grid6{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(3){padding-left:0;border-left:0}
+  .step:nth-child(3)::before{left:0}
+  .step:nth-child(n+3){border-top:1px solid var(--line-dark)}
+  .step:nth-child(n+3)::before{top:-5px}
+  .stories{grid-template-columns:1fr}
+  .nav ul{display:none}
+}
+@media (max-width:640px){
+  :root{--pad:20px}
+  body{font-size:16px}
+  .frame{border-inline:0}
+  .section{padding-block:64px}
+  .grid6,.steps,.fit{grid-template-columns:1fr}
+  .cell{min-height:0}
+  .step,.step+.step{padding:28px 0 8px;border-left:0}
+  .step+.step{border-top:1px solid var(--line-dark)}
+  .step::before,.step+.step::before{left:0;top:-5px}
+  .row{grid-template-columns:1fr;gap:10px}
+  .row .big{order:-1}
+  .faq details p{padding-right:0}
+  .foot .frame{flex-direction:column;align-items:flex-start}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="frame">
+    <a class="brand" href="#top" aria-label="Ashvale, back to top"><i aria-hidden="true"></i>Ashvale</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#agents">What we build</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-light" href="#book">Book the free audit</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="band dark hero" id="top">
+  <div class="frame">
+    <div class="hero-copy">
+      <p class="eyebrow">AI agents, built and run for your business</p>
+      <h1>The work nobody gets to, done every day.</h1>
+      <p class="lede">We build AI agents that follow up your old leads, prepare your sales calls and run your reports. The first one is free. You keep going only if it earns its place.</p>
+      <div class="hero-cta">
+        <a class="btn btn-light" href="#book">Book the free audit call
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">One agent, running in your business for 14 days, at no cost.</p>
+    </div>
+    <div class="hero-art" aria-label="Example of an agent asking for approval">
+      <div class="msg">
+        <div class="msg-top">
+          <span class="avatar" aria-hidden="true"><i></i></span>
+          <span class="msg-name">Follow up agent<span class="tag">APP</span></span>
+          <span class="msg-time">9:02 AM</span>
+        </div>
+        <p>Dana R. asked for a quote 41 days ago and never replied. Here is a draft in your voice.</p>
+        <p class="draft">Hi Dana, it's Mike. You asked us for a quote back in the spring and I never heard how you got on. We have an opening next week if you'd still like it done. Want me to hold it for you?</p>
+        <div class="msg-actions" aria-hidden="true">
+          <span class="chip go">Approve and send</span>
+          <span class="chip">Edit</span>
+          <span class="chip">Skip</span>
+        </div>
+      </div>
+      <p class="caption">An example of what lands in your Slack. Nothing reaches a customer until someone on your team approves it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="frame section">
+    <div class="problem rv">
+      <div>
+        <p class="eyebrow">Why agents</p>
+        <h2>Yesterday's leads are still sitting in your CRM.</h2>
+      </div>
+      <div class="body">
+        <p>Your team is busy with today's customers. So the quote from March never got chased, the sales call was taken with no prep, and someone still builds the same report by hand every Monday.</p>
+        <p><strong>An agent is software that does one of those jobs every day, the same way each time, and checks with a person before anything goes out.</strong> It works inside the tools you already use, so nobody has to learn a new system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="agents">
+  <div class="frame section">
+    <div class="head rv">
+      <div>
+        <p class="eyebrow">What we build</p>
+        <h2>Five jobs we hand to agents.</h2>
+      </div>
+      <p class="lede">Each one is built around your business, your tools and the way you talk to customers.</p>
+    </div>
+    <div class="grid6 rv">
+      <article class="cell">
+        <p class="num">01</p>
+        <h3>Old leads get a follow up.</h3>
+        <p>The agent scans your CRM for leads that went quiet, writes each one a message in your voice, and sends it once you approve.</p>
+        <p class="kind">Follow up agent</p>
+      </article>
+      <article class="cell">
+        <p class="num">02</p>
+        <h3>Your reps walk into calls prepared.</h3>
+        <p>An hour before each call, a one page brief lands in Slack: who the prospect is, who they compete with, and what they are likely to push back on.</p>
+        <p class="kind">Call prep agent</p>
+      </article>
+      <article class="cell">
+        <p class="num">03</p>
+        <h3>Your numbers arrive on their own.</h3>
+        <p>Payments and pipeline figures pulled into a short brief on a schedule, with anything odd flagged for a person to decide on.</p>
+        <p class="kind">Reporting agent</p>
+      </article>
+      <article class="cell">
+        <p class="num">04</p>
+        <h3>Ask your CRM a question in plain English.</h3>
+        <p>"Which leads has nobody touched in two weeks?" Asked in Slack, answered in seconds, across every CRM you run.</p>
+        <p class="kind">CRM agent</p>
+      </article>
+      <article class="cell">
+        <p class="num">05</p>
+        <h3>Content drafted from what you already said.</h3>
+        <p>Call recordings and past posts turned into drafts for your review, with guardrails so it never invents a name or a number.</p>
+        <p class="kind">Content agent</p>
+      </article>
+      <article class="cell last">
+        <p class="num">06</p>
+        <h3>Is your job missing from this list?</h3>
+        <p>If it is, the audit call is where we find it.</p>
+        <p class="kind"><a class="link" href="#book">Book the free audit
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="how">
+  <div class="frame section">
+    <div class="head rv">
+      <div>
+        <p class="eyebrow">How it works</p>
+        <h2>You see it working before you pay for anything.</h2>
+      </div>
+      <p class="lede">The first three steps cost you nothing.</p>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <p class="num">STEP 01</p>
+        <h3>A free audit call</h3>
+        <p>We ask how the business runs and where the hours go.</p>
+      </div>
+      <div class="step">
+        <p class="num">STEP 02</p>
+        <h3>A plan built for you</h3>
+        <p>A few days later we walk you through it: every agent we would install, ranked by what it is worth to your business.</p>
+      </div>
+      <div class="step">
+        <p class="num">STEP 03</p>
+        <h3>One agent, free for 14 days</h3>
+        <p>We build one and run it in your business. You watch what it does with real work.</p>
+      </div>
+      <div class="step">
+        <p class="num">STEP 04</p>
+        <h3>Keep going, or stop</h3>
+        <p>If it earned its place, we build the rest. If it did not, we part ways and you owe nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="frame section">
+    <div class="head rv">
+      <div>
+        <p class="eyebrow">Work</p>
+        <h2>What our founder has built.</h2>
+      </div>
+      <p class="lede">Ashvale is a new agency, so the work below comes from our founder's time as the implementing engineer at an AI agency, building for US and UK businesses. Client names are kept private.</p>
+    </div>
+    <div class="stories rv">
+      <article class="story">
+        <p class="where">Vehicle wrap company · Bay Area</p>
+        <h3>Two agents on a CRM of about 8,200 contacts.</h3>
+        <p>One finds leads going stale in the pipeline, drafts a follow up in the owner's own voice, and sends it to Slack for one click approval. The other briefs each rep an hour before every sales call.</p>
+      </article>
+      <article class="story">
+        <p class="where">Sales coaching business · UK</p>
+        <h3>A content agent that is not allowed to make things up.</h3>
+        <p>It turns call transcripts and past material into drafts, reviewed in Slack. Early on it was caught inventing people and dollar figures, so guardrails were built to stop it.</p>
+      </article>
+      <article class="story">
+        <p class="where">Multi brand sales operation</p>
+        <h3>One agent that answers across four CRMs.</h3>
+        <p>It answers questions about pipeline, rep activity, stale leads and missing notes. It was designed so the part that reads your question never holds a password.</p>
+      </article>
+    </div>
+
+    <div class="stats rv">
+      <h3>Keeping agents right once they are live.</h3>
+      <p>Agents tend to fail without telling anyone. A few numbers from the same record.</p>
+      <div class="rows">
+        <div class="row">
+          <p>A CRM question that took almost two minutes to answer now takes six seconds.</p>
+          <p class="big">116s to 6s</p>
+        </div>
+        <div class="row">
+          <p>Client change requests shipped in a single session after the first round of feedback.</p>
+          <p class="big">7 of 8</p>
+        </div>
+        <div class="row">
+          <p>A call prep agent went silent for six days. The cause was one comma in a settings file, which was fixed and checked live.</p>
+          <p class="big">6 days</p>
+        </div>
+        <div class="row">
+          <p>A client service had been down for 20 days without anyone noticing. It was restored, set to restart itself, and the bug behind it was patched.</p>
+          <p class="big">20 days</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="frame section">
+    <div class="head rv">
+      <div>
+        <p class="eyebrow">Fit</p>
+        <h2>Who this is for, and who it is not for.</h2>
+      </div>
+      <p class="lede">An agent is the wrong tool for some jobs. We would rather tell you that on the first call than build something you will not use.</p>
+    </div>
+    <div class="fit rv">
+      <div class="yes">
+        <h3>A good fit</h3>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>You have a team and tools already in use, like a CRM, Slack or a shared inbox.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>There is a job that repeats every day or every week.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>You can say what that job is worth in booked work, hours or missed follow ups.</span></li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>Not a fit</h3>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span>The job comes up a handful of times a month.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span>It needs a fresh judgment call every time.</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg><span>The way it gets done changes from week to week.</span></li>
+        </ul>
+        <p class="after">If that is your situation, we will say so on the audit call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="frame section">
+    <div class="founder rv">
+      <div>
+        <p class="eyebrow">Who is behind Ashvale</p>
+        <h2>The person on your call is the person who builds your agent.</h2>
+      </div>
+      <div class="body">
+        <p><strong>Abdullah Omar</strong> has spent the last two and a half years in AI automation. For two of them he worked at a company that trains AI agency founders, where he managed 40 of its top tier accounts and built its internal tooling. After that he was the implementing engineer at an AI agency, building agents for client businesses.</p>
+        <p>He started Ashvale to do that work directly, and you deal with him from the first call to the finished build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="frame section">
+    <div class="faq rv">
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h2>Before you book.</h2>
+      </div>
+      <div>
+        <details>
+          <summary>Why is the first agent free?
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 3v12M3 9h12"/></svg></summary>
+          <p>Because you have no reason to trust us yet. We would rather show you one agent doing real work in your business than ask you to believe a pitch. If it works, we expect you will want the rest.</p>
+        </details>
+        <details>
+          <summary>What happens when the 14 days are up?
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 3v12M3 9h12"/></svg></summary>
+          <p>If you want to continue, we build the rest of the plan. If you do not, we switch the agent off, part ways, and you owe nothing.</p>
+        </details>
+        <details>
+          <summary>What does the full build cost?
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 3v12M3 9h12"/></svg></summary>
+          <p>It depends on what the audit finds, so we do not publish a single number. You see the price of every agent in your plan before you commit to anything.</p>
+        </details>
+        <details>
+          <summary>Do you need access to our systems?
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 3v12M3 9h12"/></svg></summary>
+          <p>Yes, to the tools the agent works in, such as your CRM and Slack. We ask for the least access the job needs, and messages to your customers wait for a person on your team to approve them.</p>
+        </details>
+        <details>
+          <summary>Which tools do you work with?
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 3v12M3 9h12"/></svg></summary>
+          <p>Slack, GoHighLevel, Close, Pipedrive and Google Workspace so far. If your tool lets other software connect to it, we can usually work with it, and the audit call is where we check.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="book">
+  <div class="frame section">
+    <div class="cta rv">
+      <div>
+        <p class="eyebrow">Start here</p>
+        <h2>See what an agent would do in your business.</h2>
+        <p class="lede">Book one call. We ask how the business runs, then come back with a plan built for you. The plan is yours to keep, whether or not we work together.</p>
+      </div>
+      <div class="act">
+        <a class="btn btn-light" href="mailto:abdullah.m.omarr@gmail.com?subject=Free%20audit%20call&body=Hi%20Abdullah%2C%20I%27d%20like%20to%20book%20the%20free%20audit%20call.%0A%0AMy%20business%3A%20%0AA%20good%20time%20to%20talk%3A%20">Book the free audit call
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <small>Opens an email to us. Tell us your business and a good time to talk.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="band dark foot">
+  <div class="frame">
+    <a class="brand" href="#top" aria-label="Ashvale, back to top"><i aria-hidden="true"></i>Ashvale</a>
+    <span>AI agents, built and run for your business.</span>
+    <span>© 2026 Ashvale</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>
